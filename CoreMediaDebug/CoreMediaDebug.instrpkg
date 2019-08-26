@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<package>
+	<id>io.titus.CoreMediaDebug</id>
+	<title>CoreMediaDebug</title>
+	<owner>
+		<name>Brandon Titus</name>
+	</owner>
+    
+    <import-schema>os-log</import-schema>
+    
+    <os-log-point-schema>
+        <id>error-log</id>
+        <title>Core Media Error Log</title>
+        
+        <message-type>"Default"</message-type>
+        <subsystem>"com.apple.coremedia"</subsystem>
+<!--        <category>"Thumbnails"</category>-->
+
+        <pattern>
+            <message>"&lt;SEGPUMP&gt; " ?entry ": adding " ?id " " ?domain " " ?error " to error log"</message>
+        </pattern>
+        
+        <timestamp-column>
+            <mnemonic>time</mnemonic>
+            <title>Timestamp</title>
+            <type>event-time</type>
+        </timestamp-column>
+
+        <column>
+            <mnemonic>entry</mnemonic>
+            <title>Entry</title>
+            <type>string</type>
+            <expression>?entry</expression>
+        </column>
+        
+        <column>
+            <mnemonic>id</mnemonic>
+            <title>ID</title>
+            <type>int64-value</type>
+            <expression>?id</expression>
+        </column>
+        
+        <column>
+            <mnemonic>domain</mnemonic>
+            <title>Domain</title>
+            <type>string</type>
+            <expression>?domain</expression>
+        </column>
+        
+        <column>
+            <mnemonic>error</mnemonic>
+            <title>Error</title>
+            <type>string</type>
+            <expression>?error</expression>
+        </column>
+    </os-log-point-schema>
+    
+    <os-log-point-schema>
+        <id>jump-log</id>
+        <title>Core Media Jump Log</title>
+        
+        <message-type>"Default"</message-type>
+        <subsystem>"com.apple.coremedia"</subsystem>
+        
+        <pattern>
+            <message>"&lt;&lt;&lt;&lt; FigStreamPlayer &gt;&gt;&gt;&gt; " ?command ": &lt;" ?pointer "&gt; Jumping from " ?oldTime "s to " ?newTime "s within buffered content"</message>
+        </pattern>
+        
+        <timestamp-column>
+            <mnemonic>time</mnemonic>
+            <title>Timestamp</title>
+            <type>event-time</type>
+        </timestamp-column>
+        
+        <column>
+            <mnemonic>command</mnemonic>
+            <title>Command</title>
+            <type>string</type>
+            <expression>?command</expression>
+        </column>
+        
+        <column>
+            <mnemonic>pointer</mnemonic>
+            <title>Pointer</title>
+            <type>address</type>
+            <expression>?pointer</expression>
+        </column>
+        
+        <column>
+            <mnemonic>old-time</mnemonic>
+            <title>Old Time</title>
+            <type>fixed-decimal</type>
+            <expression>?oldTime</expression>
+        </column>
+        
+        <column>
+            <mnemonic>new-time</mnemonic>
+            <title>New Time</title>
+            <type>fixed-decimal</type>
+            <expression>?newTime</expression>
+        </column>
+    </os-log-point-schema>
+
+
+    <instrument>
+        <id>io.titus.coremediadebug.error-log</id>
+        <title>Core Media: Error Log</title>
+        <category>Behavior</category>
+        <purpose>A debugger for the core media error log</purpose>
+        <icon>Generic</icon>
+        
+        <create-table>
+            <id>error-log</id>
+            <schema-ref>error-log</schema-ref>
+        </create-table>
+        
+        <graph>
+            <title>Error Log</title>
+            <lane>
+                <title>Error Log</title>
+                <table-ref>error-log</table-ref>
+                <plot-template>
+                    <instance-by>domain</instance-by>
+                    <label-format>%s</label-format>
+                    <value-from>error</value-from>
+                    <!--                    <instance-by>state</instance-by>-->
+                    <!--                    <label-format>%s</label-format>-->
+                    <!--                    <value-from>state</value-from>-->
+                </plot-template>
+            </lane>
+        </graph>
+        
+        <list>
+            <title>List: Entries</title>
+            <table-ref>error-log</table-ref>
+            <column>time</column>
+            <column>entry</column>
+            <column>domain</column>
+            <column>error</column>
+        </list>
+    </instrument>
+    
+    <instrument>
+        <id>io.titus.coremediadebug.jump-log</id>
+        <title>Core Media: Jump Log</title>
+        <category>Behavior</category>
+        <purpose>A debugger for core media jumps</purpose>
+        <icon>Generic</icon>
+        
+        <create-table>
+            <id>jump-log</id>
+            <schema-ref>jump-log</schema-ref>
+        </create-table>
+        
+        <graph>
+            <title>Jump Log</title>
+            <lane>
+                <title>Jump Log</title>
+                <table-ref>jump-log</table-ref>
+                <plot-template>
+                    <instance-by>command</instance-by>
+                    <label-format>%s</label-format>
+                    <value-from>command</value-from>
+                </plot-template>
+            </lane>
+        </graph>
+        
+        <list>
+            <title>List: Jumps</title>
+            <table-ref>jump-log</table-ref>
+            <column>time</column>
+            <column>command</column>
+            <column>old-time</column>
+            <column>new-time</column>
+        </list>
+    </instrument>
+
+    
+</package>

@@ -1,0 +1,391 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F53AF25922F1EC2A00EB7B97 /* CoreMediaDebug.instrpkg in Sources */ = {isa = PBXBuildFile; fileRef = F53AF25822F1EC2A00EB7B97 /* CoreMediaDebug.instrpkg */; };
+		F546DC9B22DCDCF7003FFFA6 /* CommonInstruments.instrpkg in Sources */ = {isa = PBXBuildFile; fileRef = F546DC9A22DCDCF7003FFFA6 /* CommonInstruments.instrpkg */; };
+		F5E740592310822100D288F3 /* SyncDefaults.instrpkg in Sources */ = {isa = PBXBuildFile; fileRef = F5E740582310822100D288F3 /* SyncDefaults.instrpkg */; };
+		F5E74062231086B100D288F3 /* UserNotifications.instrpkg in Sources */ = {isa = PBXBuildFile; fileRef = F5E74061231086B100D288F3 /* UserNotifications.instrpkg */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F53AF25222F1055800EB7B97 /* StateRecorder.clp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.clips; path = StateRecorder.clp; sourceTree = "<group>"; };
+		F53AF25322F10CF900EB7B97 /* KDebugRecorder.clp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.clips; path = KDebugRecorder.clp; sourceTree = "<group>"; };
+		F53AF25622F1EC2A00EB7B97 /* CoreMediaDebug.instrdst */ = {isa = PBXFileReference; explicitFileType = com.apple.instruments.instrdst; includeInIndex = 0; path = CoreMediaDebug.instrdst; sourceTree = BUILT_PRODUCTS_DIR; };
+		F53AF25822F1EC2A00EB7B97 /* CoreMediaDebug.instrpkg */ = {isa = PBXFileReference; lastKnownFileType = "com.apple.instruments.package-definition"; path = CoreMediaDebug.instrpkg; sourceTree = "<group>"; };
+		F546DC9722DCDCF7003FFFA6 /* CommonInstruments.instrdst */ = {isa = PBXFileReference; explicitFileType = com.apple.instruments.instrdst; includeInIndex = 0; path = CommonInstruments.instrdst; sourceTree = BUILT_PRODUCTS_DIR; };
+		F546DC9A22DCDCF7003FFFA6 /* CommonInstruments.instrpkg */ = {isa = PBXFileReference; lastKnownFileType = "com.apple.instruments.package-definition"; path = CommonInstruments.instrpkg; sourceTree = "<group>"; };
+		F56A4F7D23148783005D8185 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F5E740562310822100D288F3 /* SyncDefaults.instrdst */ = {isa = PBXFileReference; explicitFileType = com.apple.instruments.instrdst; includeInIndex = 0; path = SyncDefaults.instrdst; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5E740582310822100D288F3 /* SyncDefaults.instrpkg */ = {isa = PBXFileReference; lastKnownFileType = "com.apple.instruments.package-definition"; path = SyncDefaults.instrpkg; sourceTree = "<group>"; };
+		F5E7405F231086B100D288F3 /* UserNotifications.instrdst */ = {isa = PBXFileReference; explicitFileType = com.apple.instruments.instrdst; includeInIndex = 0; path = UserNotifications.instrdst; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5E74061231086B100D288F3 /* UserNotifications.instrpkg */ = {isa = PBXFileReference; lastKnownFileType = "com.apple.instruments.package-definition"; path = UserNotifications.instrpkg; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		F53AF25722F1EC2A00EB7B97 /* CoreMediaDebug */ = {
+			isa = PBXGroup;
+			children = (
+				F53AF25822F1EC2A00EB7B97 /* CoreMediaDebug.instrpkg */,
+			);
+			path = CoreMediaDebug;
+			sourceTree = "<group>";
+		};
+		F546DC9022DCDCF7003FFFA6 = {
+			isa = PBXGroup;
+			children = (
+				F56A4F7D23148783005D8185 /* README.md */,
+				F546DC9922DCDCF7003FFFA6 /* CommonInstruments */,
+				F53AF25722F1EC2A00EB7B97 /* CoreMediaDebug */,
+				F5E740572310822100D288F3 /* SyncDefaults */,
+				F5E74060231086B100D288F3 /* UserNotifications */,
+				F546DC9822DCDCF7003FFFA6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F546DC9822DCDCF7003FFFA6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F546DC9722DCDCF7003FFFA6 /* CommonInstruments.instrdst */,
+				F53AF25622F1EC2A00EB7B97 /* CoreMediaDebug.instrdst */,
+				F5E740562310822100D288F3 /* SyncDefaults.instrdst */,
+				F5E7405F231086B100D288F3 /* UserNotifications.instrdst */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F546DC9922DCDCF7003FFFA6 /* CommonInstruments */ = {
+			isa = PBXGroup;
+			children = (
+				F546DC9A22DCDCF7003FFFA6 /* CommonInstruments.instrpkg */,
+				F53AF25222F1055800EB7B97 /* StateRecorder.clp */,
+				F53AF25322F10CF900EB7B97 /* KDebugRecorder.clp */,
+			);
+			path = CommonInstruments;
+			sourceTree = "<group>";
+		};
+		F5E740572310822100D288F3 /* SyncDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				F5E740582310822100D288F3 /* SyncDefaults.instrpkg */,
+			);
+			path = SyncDefaults;
+			sourceTree = "<group>";
+		};
+		F5E74060231086B100D288F3 /* UserNotifications */ = {
+			isa = PBXGroup;
+			children = (
+				F5E74061231086B100D288F3 /* UserNotifications.instrpkg */,
+			);
+			path = UserNotifications;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F53AF25522F1EC2A00EB7B97 /* CoreMediaDebug */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F53AF25A22F1EC2A00EB7B97 /* Build configuration list for PBXNativeTarget "CoreMediaDebug" */;
+			buildPhases = (
+				F53AF25422F1EC2A00EB7B97 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CoreMediaDebug;
+			productName = CoreMediaDebug;
+			productReference = F53AF25622F1EC2A00EB7B97 /* CoreMediaDebug.instrdst */;
+			productType = "com.apple.product-type.instruments-package";
+		};
+		F546DC9622DCDCF7003FFFA6 /* CommonInstruments */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F546DC9C22DCDCF7003FFFA6 /* Build configuration list for PBXNativeTarget "CommonInstruments" */;
+			buildPhases = (
+				F546DC9522DCDCF7003FFFA6 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CommonInstruments;
+			productName = CommonInstruments;
+			productReference = F546DC9722DCDCF7003FFFA6 /* CommonInstruments.instrdst */;
+			productType = "com.apple.product-type.instruments-package";
+		};
+		F5E740552310822100D288F3 /* SyncDefaults */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F5E7405A2310822100D288F3 /* Build configuration list for PBXNativeTarget "SyncDefaults" */;
+			buildPhases = (
+				F5E740542310822100D288F3 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SyncDefaults;
+			productName = SyncDefaults;
+			productReference = F5E740562310822100D288F3 /* SyncDefaults.instrdst */;
+			productType = "com.apple.product-type.instruments-package";
+		};
+		F5E7405E231086B100D288F3 /* UserNotifications */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F5E74063231086B100D288F3 /* Build configuration list for PBXNativeTarget "UserNotifications" */;
+			buildPhases = (
+				F5E7405D231086B100D288F3 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UserNotifications;
+			productName = UserNotifications;
+			productReference = F5E7405F231086B100D288F3 /* UserNotifications.instrdst */;
+			productType = "com.apple.product-type.instruments-package";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F546DC9122DCDCF7003FFFA6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = Titus;
+				TargetAttributes = {
+					F53AF25522F1EC2A00EB7B97 = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					F546DC9622DCDCF7003FFFA6 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					F5E740552310822100D288F3 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					F5E7405E231086B100D288F3 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+				};
+			};
+			buildConfigurationList = F546DC9422DCDCF7003FFFA6 /* Build configuration list for PBXProject "CommonInstruments" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F546DC9022DCDCF7003FFFA6;
+			productRefGroup = F546DC9822DCDCF7003FFFA6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F546DC9622DCDCF7003FFFA6 /* CommonInstruments */,
+				F53AF25522F1EC2A00EB7B97 /* CoreMediaDebug */,
+				F5E740552310822100D288F3 /* SyncDefaults */,
+				F5E7405E231086B100D288F3 /* UserNotifications */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F53AF25422F1EC2A00EB7B97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F53AF25922F1EC2A00EB7B97 /* CoreMediaDebug.instrpkg in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F546DC9522DCDCF7003FFFA6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F546DC9B22DCDCF7003FFFA6 /* CommonInstruments.instrpkg in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5E740542310822100D288F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5E740592310822100D288F3 /* SyncDefaults.instrpkg in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5E7405D231086B100D288F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5E74062231086B100D288F3 /* UserNotifications.instrpkg in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F53AF25B22F1EC2A00EB7B97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q5R9EF4JAK;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Instruments/Packages";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VERSIONING_SYSTEM = "";
+			};
+			name = Debug;
+		};
+		F53AF25C22F1EC2A00EB7B97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q5R9EF4JAK;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Instruments/Packages";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VERSIONING_SYSTEM = "";
+			};
+			name = Release;
+		};
+		F546DC9222DCDCF7003FFFA6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+		F546DC9322DCDCF7003FFFA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+			};
+			name = Release;
+		};
+		F546DC9D22DCDCF7003FFFA6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q5R9EF4JAK;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Instruments/Packages";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VERSIONING_SYSTEM = "";
+			};
+			name = Debug;
+		};
+		F546DC9E22DCDCF7003FFFA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q5R9EF4JAK;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Instruments/Packages";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VERSIONING_SYSTEM = "";
+			};
+			name = Release;
+		};
+		F5E7405B2310822100D288F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q5R9EF4JAK;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Instruments/Packages";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VERSIONING_SYSTEM = "";
+			};
+			name = Debug;
+		};
+		F5E7405C2310822100D288F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q5R9EF4JAK;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Instruments/Packages";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VERSIONING_SYSTEM = "";
+			};
+			name = Release;
+		};
+		F5E74064231086B100D288F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q5R9EF4JAK;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Instruments/Packages";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VERSIONING_SYSTEM = "";
+			};
+			name = Debug;
+		};
+		F5E74065231086B100D288F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q5R9EF4JAK;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Instruments/Packages";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VERSIONING_SYSTEM = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F53AF25A22F1EC2A00EB7B97 /* Build configuration list for PBXNativeTarget "CoreMediaDebug" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F53AF25B22F1EC2A00EB7B97 /* Debug */,
+				F53AF25C22F1EC2A00EB7B97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F546DC9422DCDCF7003FFFA6 /* Build configuration list for PBXProject "CommonInstruments" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F546DC9222DCDCF7003FFFA6 /* Debug */,
+				F546DC9322DCDCF7003FFFA6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F546DC9C22DCDCF7003FFFA6 /* Build configuration list for PBXNativeTarget "CommonInstruments" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F546DC9D22DCDCF7003FFFA6 /* Debug */,
+				F546DC9E22DCDCF7003FFFA6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5E7405A2310822100D288F3 /* Build configuration list for PBXNativeTarget "SyncDefaults" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5E7405B2310822100D288F3 /* Debug */,
+				F5E7405C2310822100D288F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5E74063231086B100D288F3 /* Build configuration list for PBXNativeTarget "UserNotifications" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5E74064231086B100D288F3 /* Debug */,
+				F5E74065231086B100D288F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F546DC9122DCDCF7003FFFA6 /* Project object */;
+}

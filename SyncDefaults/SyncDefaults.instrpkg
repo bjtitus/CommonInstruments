@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<package>
+	<id>io.titus.SyncDefaults</id>
+	<title>SyncDefaults</title>
+	<owner>
+		<name>Brandon Titus</name>
+	</owner>
+
+    <!-- Instruments Developer Help: https://help.apple.com/instruments/developer/mac/current/ -->
+
+    <!-- MARK: Schema Definitions -->
+    <!-- Define point and interval schemas needed to represent the input and output tables your package will use. -->
+    <!-- Two kinds are available: schemas with automatically generated modelers, and schemas that require custom modelers -->
+    <!--   Generated modelers: 'os-log-point-schema', 'os-signpost-interval-schema', 'ktrace-point-schema', 'ktrace-interval-schema' -->
+    <!--   Custom modeler required: 'point-schema', 'interval-schema' -->
+    <!-- To use existing schemas from other packages, declare 'import-schema' elements -->
+    <os-log-point-schema>
+        <id>syncdefaults-errors</id>
+        <title>Sync Defaults Errors</title>
+        
+        <message-type>"Default"</message-type>
+        <subsystem>"com.apple.syncdefaults"</subsystem>
+        <category>"Default"</category>
+        
+        <pattern>
+            <message>"NSUbiquitousKeyValueStore error: " ?error</message>
+        </pattern>
+        
+        <timestamp-column>
+            <mnemonic>time</mnemonic>
+            <title>Timestamp</title>
+            <type>event-time</type>
+        </timestamp-column>
+        
+        <column>
+            <mnemonic>error</mnemonic>
+            <title>Error</title>
+            <type>boolean</type>
+            <expression>(if (= (str-compare ?error "YES") 0) then 1 else 0)</expression>
+        </column>
+    </os-log-point-schema>
+    
+    <os-log-point-schema>
+        <id>syncdefaults-changes</id>
+        <title>Sync Defaults Changes</title>
+        
+        <message-type>"Debug"</message-type>
+        <subsystem>"com.apple.syncdefaults"</subsystem>
+        <category>"Default"</category>
+        
+        <pattern>
+            <message>"hasExternalChanges: " ?changes</message>
+        </pattern>
+        
+        <timestamp-column>
+            <mnemonic>time</mnemonic>
+            <title>Timestamp</title>
+            <type>event-time</type>
+        </timestamp-column>
+        
+        <column>
+            <mnemonic>changes</mnemonic>
+            <title>Changes</title>
+            <type>boolean</type>
+            <expression>(if (= (str-compare ?changes "YES") 0) then 1 else 0)</expression>
+        </column>
+    </os-log-point-schema>
+
+
+    <!-- MARK: Modeler Declarations -->
+    <!-- If there are schemas defined that require a custom modeler, each can be declared with a 'modeler' element -->
+    <!-- Modelers are based on CLIPS rules and may define 1..n output schemas, each requiring 1..n input schemas -->
+
+    <!-- MARK: Instrument Definitions -->
+    <!-- Instruments record and display data, creating concrete table requirements that instance modelers and data streams. -->
+    <!-- Any number of 'instrument' elements can be defined; each instrument should provide a cohesive graph and detail experience. -->
+    
+    <instrument>
+        <id>io.titus.syncdefaults</id>
+        <title>Sync Defaults</title>
+        <category>Behavior</category>
+        <purpose>A debugger for NSUbiquitousKeyStore</purpose>
+        <icon>Generic</icon>
+        
+        <create-table>
+            <id>syncdefaults-errors</id>
+            <schema-ref>syncdefaults-errors</schema-ref>
+        </create-table>
+        
+        <create-table>
+            <id>syncdefaults-changes</id>
+            <schema-ref>syncdefaults-changes</schema-ref>
+        </create-table>
+        
+        <graph>
+            <title>Sync Defaults</title>
+            <lane>
+                <title>Errors</title>
+                <table-ref>syncdefaults-errors</table-ref>
+                <plot-template>
+                    <instance-by>error</instance-by>
+                    <label-format>%s</label-format>
+                    <value-from>error</value-from>
+                </plot-template>
+            </lane>
+            <lane>
+                <title>Changes</title>
+                <table-ref>syncdefaults-changes</table-ref>
+                <plot-template>
+                    <instance-by>changes</instance-by>
+                    <label-format>%s</label-format>
+                    <value-from>changes</value-from>
+                </plot-template>
+            </lane>
+        </graph>
+        
+        <list>
+            <title>List: Errors</title>
+            <table-ref>syncdefaults-errors</table-ref>
+            <column>time</column>
+            <column>error</column>
+        </list>
+        
+        <list>
+            <title>List: Changes</title>
+            <table-ref>syncdefaults-changes</table-ref>
+            <column>time</column>
+            <column>changes</column>
+        </list>
+    </instrument>
+
+    <!-- MARK: Embed Templates -->
+    <!-- Templates may be included and represent a collection of tools configured for a specific tracing workflow -->
+    <!-- Each 'template' element specifies the relative path to a .tracetemplate file in the project -->
+    <!-- To create a template: start with a blank document, configure with instruments desired, and choose "File -> Save as Template" -->
+</package>

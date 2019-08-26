@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<package>
+	<id>io.titus.CommonInstruments</id>
+	<title>CommonInstruments</title>
+	<owner>
+		<name>Brandon Titus</name>
+	</owner>
+
+    <!-- Instruments Developer Help: https://help.apple.com/instruments/developer/mac/current/ -->
+    
+    <import-schema>os-log</import-schema>
+    
+    <import-schema>kdebug</import-schema>
+
+    <point-schema>
+        <id>state-machine</id>
+        <title>State Machine Events</title>
+        
+        <timestamp-column>
+            <mnemonic>time</mnemonic>
+            <title>Timestamp</title>
+            <type>event-time</type>
+        </timestamp-column>
+        
+        <column>
+            <mnemonic>category</mnemonic>
+            <title>Category</title>
+            <type>category</type>
+        </column>
+        
+        <column>
+            <mnemonic>subsystem</mnemonic>
+            <title>Subsystem</title>
+            <type>subsystem</type>
+        </column>
+        
+        <column>
+            <mnemonic>value</mnemonic>
+            <title>Value</title>
+            <type>string</type>
+        </column>
+    </point-schema>
+    
+    <modeler>
+        <id>io.titus.wireguard.StateMachine</id>
+        <title>Xhome Video Modeler</title>
+        <purpose>Logs Video Stats</purpose>
+        
+        <production-system>
+            <rule-path>StateRecorder.clp</rule-path>
+        </production-system>
+        
+        <output>
+            <schema-ref>state-machine</schema-ref>
+            <required-input>
+                <schema-ref>os-log</schema-ref>
+            </required-input>
+        </output>
+    </modeler>
+    
+    <instrument>
+        <id>io.titus.wireguard.state-machine</id>
+        <title>State Machine</title>
+        <category>Behavior</category>
+        <purpose>A debugger for state machine changes</purpose>
+        <icon>Generic</icon>
+        
+        <create-table>
+            <id>state-machine</id>
+            <schema-ref>state-machine</schema-ref>
+        </create-table>
+        
+        <graph>
+            <title>State Machine</title>
+            <lane>
+                <title>State Machine</title>
+                <table-ref>state-machine</table-ref>
+                <plot-template>
+                    <instance-by>value</instance-by>
+                    <label-format>%s</label-format>
+                    <value-from>value</value-from>
+                    <!--                    <instance-by>state</instance-by>-->
+                    <!--                    <label-format>%s</label-format>-->
+                    <!--                    <value-from>state</value-from>-->
+                </plot-template>
+            </lane>
+        </graph>
+        
+        <list>
+            <title>List: State Machine Changes</title>
+            <table-ref>state-machine</table-ref>
+            <column>time</column>
+            <column>value</column>
+        </list>
+    </instrument>
+    
+    <instrument>
+        <id>io.titus.kdebug</id>
+        <title>kdebug</title>
+        <category>Behavior</category>
+        <purpose>A kdebug Instrument</purpose>
+        <icon>Generic</icon>
+        
+        <create-table>
+            <id>kdebug</id>
+            <schema-ref>kdebug</schema-ref>
+        </create-table>
+        
+        <graph>
+            <title>kdebug</title>
+            <lane>
+                <title>KDebug</title>
+                <table-ref>kdebug</table-ref>
+                <plot-template>
+                    <instance-by>class</instance-by>
+                    <label-format>%d</label-format>
+                    <value-from>code</value-from>
+                    <!--                    <instance-by>state</instance-by>-->
+                    <!--                    <label-format>%s</label-format>-->
+                    <!--                    <value-from>state</value-from>-->
+                </plot-template>
+            </lane>
+        </graph>
+        
+        <list>
+            <title>List: Events</title>
+            <table-ref>kdebug</table-ref>
+            <column>time</column>
+            <column>class</column>
+            <column>subclass</column>
+            <column>code</column>
+            <column>function</column>
+        </list>
+    </instrument>
+
+
+
+</package>
