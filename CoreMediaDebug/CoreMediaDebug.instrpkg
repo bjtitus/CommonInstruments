@@ -101,6 +101,105 @@
         </column>
     </os-log-point-schema>
 
+    <os-log-point-schema>
+        <id>player-state-change</id>
+        <title>Player State Change</title>
+
+        <message-type>"Default"</message-type>
+        <subsystem>"com.apple.coremedia"</subsystem>
+
+        <!-- <<<< FigFilePlayer >>>> %s: [%p] %{public}s new playback state: %{public}s%{public}s (playerRate: %.3f), %{public}s update item rate (%.3f). Previous state: %{public}s, change reason: %{public}s -->
+        <!-- <<<< FigFilePlayer >>>> playerfig_getNextPlaybackState: [0x139dc5af0] P/CE new playback state: Paused (playerRate: 0.0000), DON'T need to update item rate (0.0000). Previous state: Paused, change reason: PlaythroughPredictionChanged -->
+
+        <pattern>
+            <message>
+            "&lt;&lt;&lt;&lt; FigFilePlayer &gt;&gt;&gt;&gt; " ?method ": [" ?address "] " ?command " new playback state: " ?state1 ?state2 " (playerRate: " ?playerRate "), " ?shouldUpdate " update item rate (" ?itemRate "). Previous state: " ?previousState ", change reason: " ?changeReason
+            </message>
+        </pattern>
+
+        <timestamp-column>
+            <mnemonic>time</mnemonic>
+            <title>Timestamp</title>
+            <type>event-time</type>
+        </timestamp-column>
+
+        <column>
+            <mnemonic>method</mnemonic>
+            <title>Method</title>
+            <type>string</type>
+            <expression>?method</expression>
+        </column>
+
+        <column>
+            <mnemonic>address</mnemonic>
+            <title>Address</title>
+            <type>address</type>
+            <expression>?address</expression>
+        </column>
+
+        <column>
+            <mnemonic>command</mnemonic>
+            <title>Command</title>
+            <type>string</type>
+            <expression>?command</expression>
+        </column>
+
+        <column>
+            <mnemonic>state-1</mnemonic>
+            <title>State</title>
+            <type>string</type>
+            <expression>?state1</expression>
+        </column>
+
+        <column>
+            <mnemonic>state-2</mnemonic>
+            <title>State 2</title>
+            <type>string</type>
+            <expression>?state2</expression>
+        </column>
+
+        <column>
+            <mnemonic>player-rate</mnemonic>
+            <title>Player Rate</title>
+            <type>fixed-decimal</type>
+            <expression>?playerRate</expression>
+        </column>
+
+        <column>
+            <mnemonic>should-update</mnemonic>
+            <title>Should Update</title>
+            <type>string</type>
+            <expression>?shouldUpdate</expression>
+        </column>
+
+        <column>
+            <mnemonic>item-rate</mnemonic>
+            <title>Item Rate</title>
+            <type>fixed-decimal</type>
+            <expression>?itemRate</expression>
+        </column>
+
+        <column>
+            <mnemonic>previous-state</mnemonic>
+            <title>Previous State</title>
+            <type>string</type>
+            <expression>?previousState</expression>
+        </column>
+
+        <column>
+            <mnemonic>change-reason</mnemonic>
+            <title>Change Reason</title>
+            <type>string</type>
+            <expression>?changeReason</expression>
+        </column>
+
+        <column>
+            <mnemonic>state-concept</mnemonic>
+            <title>State Concept</title>
+            <type>event-concept</type>
+            <expression>(if (= (str-compare ?state1 "Paused") 0) then "Red" else "Green")</expression>
+        </column>
+    </os-log-point-schema>
 
     <instrument>
         <id>io.titus.coremediadebug.error-log</id>
@@ -174,6 +273,42 @@
             <column>new-time</column>
         </list>
     </instrument>
+
+    <instrument>
+        <id>io.titus.coremediadebug.player</id>
+        <title>Core Media: Player</title>
+        <category>Behavior</category>
+        <purpose>A debugger for core media player</purpose>
+        <icon>Generic</icon>
+
+        <create-table>
+            <id>player-state-change</id>
+            <schema-ref>player-state-change</schema-ref>
+        </create-table>
+
+        <graph>
+            <title>Playback State</title>
+            <lane>
+                <title>Player State Change</title>
+                <table-ref>player-state-change</table-ref>
+                <plot-template>
+                    <instance-by>address</instance-by>
+                    <label-format>%s</label-format>
+                    <value-from>state-1</value-from>
+                    <color-from>state-concept</color-from>
+                </plot-template>
+            </lane>
+        </graph>
+
+        <list>
+            <title>List: Player State Change</title>
+            <table-ref>player-state-change</table-ref>
+            <column>time</column>
+            <column>address</column>
+            <column>state-1</column>
+        </list>
+    </instrument>
+
 
     
 </package>

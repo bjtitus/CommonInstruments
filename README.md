@@ -8,6 +8,7 @@ Investigates Core Media related information and errors.
 
 * Error Log shows errors as they are added to the error log
 * Jump Log shows any jumps in time (seeking) during playback
+* Player shows any Paused / Play events on an instance of a player
 
 ## Sync Defaults
 
